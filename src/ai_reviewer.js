@@ -59,7 +59,6 @@ export default class AIReviewer {
       await this.checkModelAvailability();
 
       const files = await this.getAllFiles(diffDir);
-      // 收集所有作者信息作为上下文
       const authorContext = [];
       for (const file of files) {
         const fileContent = await fs.readFile(file, "utf8");
