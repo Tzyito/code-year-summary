@@ -41,6 +41,7 @@ code-year-summary -a "git commit user name" -t ollama -m llama2 -s encourage -i 
 - `-b, --base-url`: AI service base url (default: ollama/http://localhost:11434, openai/https://api.openai.com/v1, claude/https://api.anthropic.com)
 - `-i, --include`: Specify the include file pattern
 - `-e, --exclude`: Specify the exclude file pattern
+- `-o, --output`: Specify the output directory (default: project path + '/report')
 
 ## 🌈 Supported AI Services
 

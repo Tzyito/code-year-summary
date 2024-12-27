@@ -28,6 +28,7 @@ program
   )
   .option("-k, --api-key <key>", "online ai service API Key")
   .option("-b, --base-url <url>", "online ai service base url")
+  .option("-o, --output <output>", "specify the report output path")
   .parse(process.argv);
 
 const options = program.opts();

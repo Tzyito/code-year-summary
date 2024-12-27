@@ -2,16 +2,13 @@ import { execSync } from "child_process";
 import fs from "fs/promises";
 import path from "path";
 import ora from "ora";
+import { ensureDirectoryExists } from "./utils.js";
 
 // analyze git history
 export default class GitAnalyzer {
   constructor(options) {
     this.options = options;
     this.baseOutputDir = path.join(options.path, "file_diff");
-  }
-
-  async ensureDirectoryExists(dirPath) {
-    await fs.mkdir(dirPath, { recursive: true });
   }
 
   getFileChanges(filePath) {
@@ -154,7 +151,11 @@ export default class GitAnalyzer {
     const spinner = ora("Analyzing git history...").start();
 
     try {
-      await this.ensureDirectoryExists(this.baseOutputDir);
+      const { success, _path } = await ensureDirectoryExists(this.baseOutputDir);
+
+      if (!success) {
+        throw new Error(`Failed to create diff json root directory: ${_path}`);
+      }
       const exclude = this.options.exclude;
       const include = this.options.include;
       const command = this.getExecCommand(include, exclude);
@@ -176,7 +177,10 @@ export default class GitAnalyzer {
           ...dirParts.map((part) => `${part}_diff`),
         );
 
-        await this.ensureDirectoryExists(outputDir);
+        const { success: _success, _path: _outputDir } = await ensureDirectoryExists(outputDir);
+        if (!_success) {
+          throw new Error(`Failed to create diff json directory: ${_outputDir}`);
+        }
 
         const outputPath = path.join(
           outputDir,

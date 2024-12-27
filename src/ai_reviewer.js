@@ -5,7 +5,7 @@ import chalk from "chalk";
 import dayjs from "dayjs";
 import { prompts } from "./prompt.js";
 import AIService from "./services/ai-service.js";
-
+import { ensureDirectoryExists } from "./utils.js";
 // summary generator
 export default class AIReviewer {
   constructor(options) {
@@ -54,6 +54,11 @@ export default class AIReviewer {
   }
 
   async generateSummary(diffDir, outputPath) {
+    const { success, _path } = await ensureDirectoryExists(outputPath);
+    if (!success) {
+      throw new Error(`Failed to create report directory: ${_path}`);
+    }
+
     const spinner = ora("Reading diff files...").start();
     try {
       await this.checkModelAvailability();
@@ -81,8 +86,6 @@ export default class AIReviewer {
       const spinner2 = ora("Generating AI summary...").start();
       const response = await this.aiService.generateReview(prompt);
       spinner2.succeed("AI summary generated");
-      // ensure output directory exists
-      await fs.mkdir(outputPath, { recursive: true });
 
       const fileName = path.join(
         outputPath,
