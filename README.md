@@ -1,8 +1,23 @@
-# 🚀 Code Year Summary
+# 🌪️ Code Year Summary
+
+[![NPM version](https://img.shields.io/npm/v/code-year-summary?color=a1b858&label=)](https://www.npmjs.com/package/code-year-summary)
+
 
 ## 🌟 Overview
 
 Code Year Summary is an intelligent CLI tool that transforms your yearly coding journey into an insightful, AI-powered review. It's like having a personal code therapist who analyzes your git commits and provides a comprehensive summary of your programming adventures!
+
+## 🌟 Motivation
+
+Inspired by the desire to help developers reflect on their coding journey and grow professionally.
+
+## 💡 Tips
+
+- Ensure you have a stable internet connection
+- Keep your API keys secure
+- Choose the right AI model for your needs
+
+Enjoy your coding year review! 🚀👩‍💻👨‍💻
 
 ## 🔧 Features
 
@@ -11,23 +26,35 @@ Code Year Summary is an intelligent CLI tool that transforms your yearly coding 
 - 📊 Detailed Insights into Your Coding Year
 - 🌈 Multiple AI Service Support (Ollama, OpenAI, Claude)
 
+## 🌈 Supported AI Services
+
+- Ollama
+- OpenAI
+- Anthropic
+
+## 📋 Requirements
+
+- Node.js 18+
+- Git
+- API Key for online AI services
+
 ## 🚀 Usage
 
 ## Basic usage
 ```bash
-code-year-summary -a "git commit user name" -t openai -k YOUR_API_KEY
+npx code-year-summary -a "git commit user name" -t openai -k YOUR_API_KEY
 ```
 ## Specify project path
 ```bash
-code-year-summary -p /path/to/your/project -a "git commit user name" -t claude -k YOUR_API_KEY
+npx code-year-summary -p /path/to/your/project -a "git commit user name" -t claude -k YOUR_API_KEY
 ```
 ## Choose summary style
 ```bash
-code-year-summary -a "git commit user name" -t ollama -m llama2 -s encourage
+npx code-year-summary -a "git commit user name" -t ollama -m llama2 -s encourage
 ```
 ## Specify include and exclude file pattern
 ```bash
-code-year-summary -a "git commit user name" -t ollama -m llama2 -s encourage -i "^src" -e "node_modules"
+npx code-year-summary -a "git commit user name" -t ollama -m llama2 -s encourage -i "^src" -e "node_modules"
 ```
 
 ## 🛠 Options
@@ -43,18 +70,6 @@ code-year-summary -a "git commit user name" -t ollama -m llama2 -s encourage -i 
 - `-e, --exclude`: Specify the exclude file pattern
 - `-o, --output`: Specify the output directory (default: project path + '/report')
 
-## 🌈 Supported AI Services
-
-- Ollama
-- OpenAI
-- Anthropic
-
-## 📋 Requirements
-
-- Node.js 18+
-- Git
-- API Key for online AI services
-
 ## 🎉 Example Output
 
 The tool generates a markdown file with:
@@ -69,16 +84,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-MIT License
+[MIT](./LICENSE) License &copy; 2021-PRESENT [tzyito](https://github.com/tzyito)
 
-## 🌟 Motivation
-
-Inspired by the desire to help developers reflect on their coding journey and grow professionally.
-
-## 💡 Tips
-
-- Ensure you have a stable internet connection
-- Keep your API keys secure
-- Choose the right AI model for your needs
-
-Enjoy your coding year review! 🚀👩‍💻👨‍💻
