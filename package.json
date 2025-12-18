@@ -1,6 +1,6 @@
 {
   "name": "code-year-summary",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Generate year-end code review using git history and AI",
   "type": "module",
   "main": "index.js",
