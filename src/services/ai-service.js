@@ -57,10 +57,11 @@ export default class AIService {
 
                 case "claude":
                     const claudeResponse = await this.client.messages.create({
-                        model: this.model || 'claude-3.5-sonnet-20241022',
-                        messages: [{ role: "system", content: prompt }],
+                        model: this.model || 'claude-3-5-sonnet-20241022',
+                        system: prompt,
+                        messages: [{ role: "user", content: "Generate the review now." }],
                     });
-                    return claudeResponse.content[0].text;
+                    return JSON.parse(claudeResponse).content[0]?.text;
 
                 default:
                     throw new Error(`Unsupported AI service type: ${this.type}`);
