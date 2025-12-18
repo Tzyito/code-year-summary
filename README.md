@@ -82,6 +82,18 @@ The tool generates a markdown file with:
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+## 📦 Publish (tag push)
+
+- **Secrets**: add `NPM_TOKEN` in GitHub repo → Settings → Secrets and variables → Actions.
+- **Release**: bump `package.json` version, then push a tag like `release-v0.0.5` (must match the version).
+
+```bash
+npm version patch
+git push
+git tag release-v0.0.5
+git push --tags
+```
+
 ## 📄 License
 
 [MIT](./LICENSE) License &copy; 2021-PRESENT [tzyito](https://github.com/tzyito)
